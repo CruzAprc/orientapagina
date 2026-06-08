@@ -1,0 +1,113 @@
+/* ===================================================================
+   Conecta Pesquisa — overrides do clone local
+   1) Vídeo na 1ª dobra (hero)  2) Reforço tema AZUL & BRANCO
+   Carregado por último no <head> pra ganhar precedência.
+   =================================================================== */
+
+/* ---------- VÍDEO NO HERO ---------- */
+.conecta-hero-video{
+  max-width: 760px;
+  width: 100%;
+  margin: 26px auto 14px;
+}
+.conecta-hero-video .elementor-widget,
+.conecta-hero-video .elementor-widget-container{
+  width: 100%;
+}
+/* o widget do video tem width:initial (Elementor) -> forca 100% pra nao estourar a tela */
+.conecta-hero-video .elementor-element.elementor-element-2ba2251{
+  --width: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+/* o wrapper 16:9 inline ja existe; aqui so refinamos a borda/sombra */
+.conecta-hero-video > div > div > div[style*="padding-bottom:56.25%"],
+.conecta-hero-video div[style*="56.25%"]{
+  border-radius: 14px !important;
+  box-shadow: 0 18px 50px rgba(20,102,216,.22);
+  overflow: hidden;
+}
+@media (max-width: 767px){
+  .conecta-hero-video{ margin: 18px auto 10px; padding: 0 6px; }
+}
+
+/* ---------- TEMA AZUL & BRANCO (reforço de segurança) ---------- */
+:root{
+  --conecta-azul: #0658f3;
+  --conecta-azul-escuro: #0445c0;
+  --conecta-azul-claro: #e6f0ff;
+}
+
+/* botões: azul sólido com texto branco, hover azul escuro */
+.elementor-button,
+.elementor-button:visited{
+  background-color: var(--conecta-azul) !important;
+  color: #ffffff !important;
+  border-color: var(--conecta-azul) !important;
+}
+.elementor-button:hover,
+.elementor-button:focus{
+  background-color: var(--conecta-azul-escuro) !important;
+  border-color: var(--conecta-azul-escuro) !important;
+  color: #ffffff !important;
+}
+.elementor-button .elementor-button-icon svg,
+.elementor-button .elementor-button-text{ color:#ffffff !important; fill:#ffffff !important; }
+
+/* links de destaque em azul */
+a{ color: var(--conecta-azul); }
+
+/* faixas/realces que porventura ficaram em outra cor -> azul claro */
+.elementor-widget-text-editor span[style*="color"]{ color: var(--conecta-azul) !important; }
+
+/* ---------- DESKTOP: subir textos do hero (logo do topo removida) ---------- */
+.elementor-element-046785a{ --spacer-size: 12px !important; }
+.elementor-10 .elementor-element.elementor-element-daabc38{ --padding-top: 48px !important; }
+
+/* =====================================================================
+   MOBILE (foco 100%) — hero responsivo e bonito
+   Mulher = faixa no topo (16:9 = 56.25vw) | textos centralizados abaixo
+   ===================================================================== */
+@media (max-width:767px){
+  html, body{ overflow-x: hidden; }            /* mata vazamento lateral */
+
+  /* HEADER: imagem como faixa no topo, conteudo comeca abaixo dela */
+  .elementor-10 .elementor-element.elementor-element-daabc38{
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    --padding-top: 58vw !important;            /* 56.25vw da imagem + respiro */
+    --padding-left: 18px !important;
+    --padding-right: 18px !important;
+  }
+  .elementor-element-046785a{ --spacer-size: 2px !important; }
+
+  /* textos centralizados e cabendo na tela (override do width:initial do Elementor) */
+  .elementor-10 .elementor-element.elementor-element-18d9888,
+  .elementor-10 .elementor-element.elementor-element-b19a27b,
+  .elementor-10 .elementor-element.elementor-element-c3e37a5{
+    --width:100% !important;
+    width:100% !important; max-width:100% !important;
+    text-align:center !important;
+  }
+  .elementor-element-18d9888 p, .elementor-element-b19a27b p,
+  .elementor-element-c3e37a5 p{ white-space:normal !important; }
+  .elementor-element-18d9888 *,
+  .elementor-element-b19a27b *{ font-size:20px !important; line-height:1.25 !important; word-break:break-word; text-align:center !important; }
+  .elementor-element-c3e37a5 *{ font-size:15px !important; line-height:1.4 !important; text-align:center !important; }
+
+  /* nada do hero pode exceder a largura da tela */
+  .elementor-10 .elementor-element.elementor-element-daabc38 .e-con-inner,
+  .elementor-10 .elementor-element.elementor-element-daabc38 .elementor-widget-container{
+    max-width:100% !important; overflow-x:hidden;
+  }
+
+  /* video full-width, sem buraco */
+  .conecta-hero-video{ margin:16px auto 8px !important; max-width:100% !important; padding:0 !important; }
+
+  /* CTA ocupando a largura */
+  .elementor-element-87b2614 .elementor-button{ width:100% !important; justify-content:center; }
+}
+
+/* O fundo do header (mulher da Orienta) vem dos proprios arquivos de imagem
+   (Sem-Titulo-1.webp / faef.webp substituidos). */

@@ -1,0 +1,7 @@
+# backups / debug (não vão pro deploy)
+mirror.py
+index.original.html
+index.conecta-backup.html
+**/_conecta-bkp/
+*.conecta-orig.webp
+.DS_Store
